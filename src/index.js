@@ -2,7 +2,7 @@ window.onload = () => {
   addListenerToSubmitFunction();
 };
 
-const userArray = [];
+let userArray = [];
 
 function saveUserData() {
   const user = {
@@ -29,9 +29,19 @@ function paintDataInDOM() {
   });
 }
 
+function deleteUserData() {
+  localStorage.clear();
+  userArray = [];
+  document.getElementById("added-users").innerHTML = "";
+}
+
 function addListenerToSubmitFunction() {
   document.querySelector("#buttonSubmit").addEventListener("click", (e) => {
     e.preventDefault();
     saveUserData();
+  });
+  document.querySelector("#buttonDelete").addEventListener("click", (e) => {
+    e.preventDefault();
+    deleteUserData();
   });
 }
